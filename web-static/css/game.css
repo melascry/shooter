@@ -1,0 +1,59 @@
+
+#gui
+{
+	height : 100%;
+	width : 100%
+}
+
+#gui .player-life
+{
+	position : relative;
+	height : 16px;
+	width : 79px;
+	background-image : url(../img/heart-off.png);
+	top: 10px;
+	left: 10px;
+}
+#gui .life
+{
+	position : absolute;
+	height : 100%;
+	width : 50%;
+	background-image: url(../img/heart.png);
+	background-position: top left;
+}
+#gui .score-count
+{
+	position : absolute;
+	background-image : url(../img/icon-star-on.png);
+	height : 14px;
+	width : 14px;
+	right: 10px;
+	top : 10px;
+	
+}
+#current-score
+{
+	position: absolute;
+	right : 24px;
+	top : 10px;
+	font-size : 12px;
+	color : #fff;
+}
+
+.ennemy
+{
+	position:absolute;
+	overflow: hidden;
+}
+.ennemy:hover
+{
+	cursor: url(../img/aim-on.png) 15 15, default;
+}
+
+.sprite
+{
+	position:absolute;
+	top : 0;
+	left : 0;
+}

@@ -1,0 +1,107 @@
+
+
+#menu
+{
+	z-index : 1;
+	background-color : rgba(0,0,0,0.9);
+	position : absolute;
+	left : 320px;
+	top : 20px;
+	height : 80%;
+	width : 20%;
+	text-align : center;
+}
+#menu:hover
+{
+	//cursor:default; j'ai préféré laisser le aim suffit de décommenter.
+}
+#menu-shadow
+{
+	position : absolute;
+	z-index : 0;
+	left : 325px;
+	top : 25px;
+	height : 80%;
+	width : 20%;
+	background-color: rgba(0,0,0,0.6);
+}
+
+#title
+{
+	font-family: gunship-italic;
+	font-size: 16px;
+	text-shadow: 1px 1px 5px yellow, -1px -1px 5px yellow, -1px 1px 5px yellow, 1px -1px 5px yellow;
+	margin: 5px;
+}
+
+#score dl
+{
+	margin: 10px;
+	color: #fff;
+	
+}
+
+#score dl > *
+{
+	margin: 10px 0px;
+	font-size: 12px;
+	line-height: 17px;
+}
+
+#score dt
+{
+	float: left;
+	clear : both;
+	width: 90px;
+	color: #fff;
+}
+
+#score dd
+{
+	float: left;
+	color: #fff;
+	letter-spacing: 1px;
+}
+
+#difficulty
+{
+	clear : both;
+}
+
+#difficulty .selectable
+{
+	border-radius : 10px;
+	background-color: rgba(150, 0, 0, 0.75);
+	background-position: left center;
+	//padding: 5px;
+	//padding-left: 27px;
+	//padding-top: 7px;
+	border: 2px inset;
+	cursor: pointer;
+	color: #caffff;
+	line-height: 28px;
+	width : 100px;
+	margin : 0 auto 10px auto;
+	
+}
+#difficulty .selected
+{
+	border-radius : 10px;
+	background-color: rgba(255,100,100,0.8);
+	background-position: left center;
+	//padding: 5px;
+	//padding-left: 27px;
+	//padding-top: 7px;
+	border: 2px inset;
+	cursor: pointer;
+	color: #caffff;
+	line-height: 28px;
+	width : 100px;
+	margin : 0 auto 10px auto;
+	
+	cursor : default;
+}
+#difficulty .selectable:hover
+{	
+	background-color: rgba(255,0,0,0.8);
+}

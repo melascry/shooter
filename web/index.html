@@ -3,20 +3,63 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css"/>
+
+<link rel="stylesheet" type="text/css" href="/shooter-static/css/base.css"/>
+<link rel="stylesheet" type="text/css" href="/shooter-static/css/menu.css"/>
+<link rel="stylesheet" type="text/css" href="/shooter-static/css/game.css"/>
+
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/shooter-static/js/Shooter.js"></script>
+<script type="text/javascript" src="/shooter-static/js/Menu.js"></script>
+<script type="text/javascript" src="/shooter-static/js/Game.js"></script>
+<script type="text/javascript" src="/shooter-static/js/Ennemy.js"></script>
+<script type="text/javascript" src="/shooter-static/js/Sprite.js"></script>
+
+
 <title>Shooter</title>
 </head>
-<body>
-The starter
-<div id="screen">
-	<div class="scene-view">
-		<div id="main-scene" class="scene"></div>
-	</div>
-	<div id="gui"></div>
-<!-- 	<ul> -->
-<!-- 	<li>title</li> -->
-<!-- 	</ul> -->
+<body onload="start()">
+<div id="shooter">
+	<div id="scene">
+		<div id="menu-style">
+			<div id="menu">
+				<div id="title">
+				SHOOTER
+				</div>
+				<div id="score">
+					<dl>
+						<dt> Score : </dt>
+						<dd class="score"> 5000</dd>
+						<dt> HighScore : </dt>
+						<dd class="highscore"> 10000</dd>
+					</dl>
+				</div>
+				<div id="difficulty">
+					<div class="selected" id="easy">
+					Facile
+					</div>
+					<div class="selectable" id="hard">
+					Difficile
+					</div>
+				</div>
+			</div>
+				<div id="menu-shadow">
+				</div>
+		</div>
+			<div id="game">
+				<div id="gui">
+					<div class="player-life">
+						<div class="life">
+						</div>
+					</div>
+					<div class="score-count">
+					</div>
+					<div id="current-score">0</div>
+				</div>
+		</div>	
+	</div>	
 </div>
 </body>
 </html>
