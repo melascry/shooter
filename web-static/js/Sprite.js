@@ -79,7 +79,11 @@ Sprite.prototype.play = function(onComplete)
 	var _this = this;
 	
 	if(this.timerSprite)
+	{
 		clearTimeout(this.timerSprite);
+		this.timerSprite = false;
+	}
+		
 	
 	this.timerSprite = setTimeout(
 	function()

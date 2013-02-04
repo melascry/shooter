@@ -15,14 +15,14 @@ var Menu = function(score, highScore)
 			{
 				_this.buttonEasy.style.className ="selected";
 				_this.buttonHard.style.className ="selectable";
-				change(1);
+				shoot.changeToGame(1);
 			});
 	this.buttonHard = document.getElementById("hard");
 	this.buttonHard.addEventListener("click", function()
 			{
 				_this.buttonEasy.style.className ="selectable";
 				_this.buttonHard.style.className ="selected";
-				change(2);
+				shoot.changeToGame(2);
 			});
 	
 }

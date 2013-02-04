@@ -1,70 +1,111 @@
 var tt;
-var Ennemy = function(speed, hardness, root)
+var Ennemy = function(speed, hardness, jParent)
 {
 	this.jRoot = $("<div/>").addClass("ennemy");
 	
 	this.speed = speed;
-	this.hardeness = hardness;
+	this.hardness = hardness;
 
 	//the move sprite is too big it has only 88px of height so i resized it
 	// but the transparency seems to bug, so i'll let it that way
-	this.moveSprite = new Sprite(this.jRoot,"/shooter-static/img/move.png",2048,88,16,1,true);
-	tt = this.moveSprite;
+	this.moveSprite = new Sprite(this.jRoot,"/shooter-static/img/move.png",2048,128,16,1,true);
+	//tt = this.moveSprite;
 	this.deadSprite = new Sprite(this.jRoot,"/shooter-static/img/death.png",640,128,5,1,false);
 	
 	this.deadSprite.hide();
 	
-	root.appendChild(this.jRoot.get(0));
+	jParent.append(this.jRoot);
 	
 	this.moveSprite.show();
 	this.moveSprite.play();
+
+	this.x = Math.random()*(400-128);
+	this.y = 800;
 	
-	this.x = this.jRoot.css("top");
-	this.y = this.jRoot.css("left");
-	
-	this.desiredX = this.jRoot.css("top");
-	this.desiredY = this.jRoot.css("left");
-	
+	this.jRoot.css("left", this.y+'px');
+	this.jRoot.css("top", this.x+'px');
+		
 	this.width = this.jRoot.css("width");
 	this.height = this.jRoot.css("height");
 	
-	this.timeUpdateMove = 1000/40;
+	this.timeUpdateMove = 60/1000;
 	
-	//this.jRoot.click(this.die()); //considère tout l'écran -_-
+	this.dead = false;
+	this.timerMove = false;
+	this.timeMove();
+	var _this = this;
+	this.jRoot.on("click",function()
+			{_this.dieClick();});
 };
 
 
 Ennemy.prototype.die = function()
 {
-	console.log("click");
-	/*var _this = this;
+	//shoot.game.destroyEnnemy(this);
+	clearTimeout(this.timerMove);
+	this.timerMove = false;
+	
+	this.jRoot.remove();
+	
+	delete this.moveSprite;
+	delete this.deadSprite;
+	
+	delete this;
+}
+Ennemy.prototype.dieClick = function()
+{
+	console.log("die click");
+	var _this = this;
+	
 	this.moveSprite.hide();
+	
 	this.deadSprite.show();
+	
 	this.deadSprite.play(function(){
-		shoot.game.score+= _this.speed * _this.hardness;
-		_this.jRoot.remove();
-	});*/
+		console.log(_this.speed +' : ' + _this.hardness);
+		shoot.game.changeScore(Math.floor(_this.speed * _this.hardness));
+		_this.die();
+	});
+	
+	clearTimeout(this.timerMove);
+	this.timerMove = false;
 }
 
 
 Ennemy.prototype.move = function(x,y)
 {
-	/*var _this = this;
-	if(!moving)
-		{
-		this.moving = setTimeout(function(){
-				if()
-		},
-		this.timeUpdateMove);
-	}
-	else
+	this.y -= y * this.speed * this.timeUpdateMove;
+	this.setPosition();
+	if (this.y < 0 && !this.dead)
 	{
-		setTimeout(function()
-				{
-					_this.move(x,y);
-				},
-				this.timeUpdateMove
-				);
-	}*/
-	
+		//Lost Life
+		this.dead = true;
+		
+		shoot.game.downLife();
+		
+		this.jRoot.hide('fade',this.die());
+		
+		//clearTimeout(this.timerMove);
+	}
 }
+
+Ennemy.prototype.setPosition = function()
+{
+	this.jRoot.css("top", Math.floor(this.x) + 'px');
+	this.jRoot.css("left", Math.floor(this.y) + 'px');
+}
+
+Ennemy.prototype.timeMove = function()
+{
+	var _this = this;
+	this.move(0,1);
+	this.timerMove = setTimeout(function(){
+		_this.timeMove();
+	}, this.timeUpdateMove);
+}
+
+
+
+
+
+

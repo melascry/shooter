@@ -5,7 +5,7 @@
 	width : 100%
 }
 
-#gui .player-life
+#gui #player-life
 {
 	position : relative;
 	height : 16px;
@@ -14,7 +14,7 @@
 	top: 10px;
 	left: 10px;
 }
-#gui .life
+#gui #life
 {
 	position : absolute;
 	height : 100%;
