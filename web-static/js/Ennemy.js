@@ -12,6 +12,7 @@ var Ennemy = function(speed, hardness, jParent)
 	//tt = this.moveSprite;
 	this.deadSprite = new Sprite(this.jRoot,"/shooter-static/img/death.png",640,128,5,1,false);
 	
+	this.moveSprite.hide();
 	this.deadSprite.hide();
 	
 	jParent.append(this.jRoot);
@@ -54,21 +55,23 @@ Ennemy.prototype.die = function()
 }
 Ennemy.prototype.dieClick = function()
 {
-	console.log("die click");
+	//console.log("die click");
 	var _this = this;
+	
+	clearTimeout(this.timerMove);
+	this.timerMove = false;
 	
 	this.moveSprite.hide();
 	
 	this.deadSprite.show();
 	
 	this.deadSprite.play(function(){
-		console.log(_this.speed +' : ' + _this.hardness);
+		
 		shoot.game.changeScore(Math.floor(_this.speed * _this.hardness));
 		_this.die();
 	});
 	
-	clearTimeout(this.timerMove);
-	this.timerMove = false;
+	
 }
 
 
@@ -76,7 +79,7 @@ Ennemy.prototype.move = function(x,y)
 {
 	this.y -= y * this.speed * this.timeUpdateMove;
 	this.setPosition();
-	if (this.y < 0 && !this.dead)
+	if (this.y < -64 && !this.dead)
 	{
 		//Lost Life
 		this.dead = true;

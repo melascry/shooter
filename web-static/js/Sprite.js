@@ -41,8 +41,8 @@ var Sprite = function(parent, url, width, height, colCount, rowCount, loop){
 	
 	this.currentFrame = 0;
 	
-	this.frameDuration = 1000/20;
 	this.frameCount = colCount * rowCount;
+	this.frameDuration = 1000/(2*this.frameCount);
 	
 	this.timerSprite = false;
 };
@@ -54,8 +54,7 @@ var Sprite = function(parent, url, width, height, colCount, rowCount, loop){
  */
 Sprite.prototype.show = function(){
 	// TODO
-	this.root.display = "block";
-	
+	this.root.style.display = "block";
 	this.parent.css("width", this.frameWidth+'px');
 	this.parent.css("height", this.frameHeight+'px');
 };
@@ -76,6 +75,7 @@ Sprite.prototype.hide = function(){
 Sprite.prototype.play = function(onComplete)
 {
 	// TODO
+	
 	var _this = this;
 	
 	if(this.timerSprite)
@@ -83,13 +83,12 @@ Sprite.prototype.play = function(onComplete)
 		clearTimeout(this.timerSprite);
 		this.timerSprite = false;
 	}
-		
 	
 	this.timerSprite = setTimeout(
 	function()
 	{
 		_this.nextFrame();
-		if(_this.loop || _this.currentFrame < _this.frameCount -1)
+		if(_this.loop || _this.currentFrame < _this.frameCount-1)
 		{
 			_this.play(onComplete);
 		}
@@ -97,6 +96,7 @@ Sprite.prototype.play = function(onComplete)
 		{
 			if( (typeof onComplete) == "function")
 			{
+				console.log("complete");
 				onComplete(_this);
 			}
 		}

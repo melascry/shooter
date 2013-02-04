@@ -5,6 +5,8 @@ var Game = function()
 	this.life = 0;
 	this.jLife = $('#life');
 	
+	this.jEffect = $("#lifeeffect");
+	
 	this.score = 0;
 	this.wantedScore = 0;
 	
@@ -57,19 +59,24 @@ Game.prototype.popEnnemy = function()
 	var timePop = (this.minTimePop + Math.random()*(this.maxTimePop - this.minTimePop))/this.hardness;
 	var speedPop = (this.minSpeed + Math.random()*(this.maxSpeed - this.minSpeed)) * this.hardness;
 	
-	var en = new Ennemy(speedPop , this.hardness, this.jRoot);
+	var p = Math.random();
+	
+	if(p< 0.2)
+		var en = new EnnemyLife(speedPop , this.hardness, this.jRoot);
+	else
+		var en = new Ennemy(speedPop , this.hardness, this.jRoot);
 	this.ennemies.push(en);
 	var _this = this;
 	
 	this.minTimePop -= 0.1* this.hardness;
-	this.minTimePop = Math.min(0.1,this.minTimePop);
+	this.minTimePop = Math.max(0.2,this.minTimePop);
 	
 	this.maxTimePop -= 0.1* this.hardness;
-	this.maxTimePop = Math.min(0.1,this.maxTimePop);
+	this.maxTimePop = Math.max(0.2,this.maxTimePop);
 	
 	this.minSpeed += 0.25 * this.hardness;
 	this.maxSpeed += 0.5 * this.hardness;
-	
+		
 	this.timerPop = setTimeout(function()
 			{
 				_this.popEnnemy();
@@ -90,7 +97,7 @@ Game.prototype.changeScore = function(value)
 {
 	this.wantedScore+= value;
 	
-	this.deltaTimeScore = Math.max(1000/60, (this.wantedScore-this.score)/1000)
+	this.deltaTimeScore = Math.max(1000/60, 1000/(this.wantedScore-this.score))
 	if(!this.timerScore)
 	{
 		this.changingScore();
@@ -119,6 +126,8 @@ Game.prototype.changingScore = function()
 
 Game.prototype.downLife = function()
 {
+	this.jEffect.show("fade",50);
+	this.jEffect.hide("fade",50);
 	this.life--;
 	this.jLife.css("width", this.life * 20 + '%');
 	if(this.life <= 0)

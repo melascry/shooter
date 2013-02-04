@@ -32,6 +32,15 @@
 	top : 10px;
 	
 }
+#lifeeffect
+{
+	z-index : 100;
+	position : absolute;
+	width : 100%;
+	height : 100%;
+	background-color: red;
+	display : none;
+}
 #current-score
 {
 	position: absolute;
