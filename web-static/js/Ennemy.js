@@ -42,7 +42,7 @@ var Ennemy = function(speed, hardness, jParent)
 	this.timerMove = false;
 	this.timeMove();
 	var _this = this;
-	this.jRoot.on("click",function()
+	this.jRoot.on("mousedown",function()
 			{_this.dieClick();});
 };
 
@@ -66,6 +66,7 @@ Ennemy.prototype.dieClick = function()
 	var _this = this;
 	
 	clearTimeout(this.timerMove);
+	
 	this.timerMove = false;
 	
 	this.moveSprite.hide();
@@ -95,7 +96,6 @@ Ennemy.prototype.move = function(x,y)
 		
 		this.jRoot.hide('fade',this.die());
 		
-		//clearTimeout(this.timerMove);
 	}
 }
 

@@ -31,11 +31,11 @@ var Sprite = function(parent, url, width, height, colCount, rowCount, loop){
 	
 	this.parent.append(this.root);	
 	
-	this.img = document.createElement("img");
+	this.img = document.createElement("div");
 	this.img.style.width = width+'px';
 	this.img.style.height = height+'px';
 	this.img.style.overflow = "hidden";
-	this.img.src = this.url;
+	this.img.style.background = "url("+this.url+")";
 	
 	this.root.appendChild(this.img);
 	
