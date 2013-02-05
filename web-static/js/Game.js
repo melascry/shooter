@@ -62,10 +62,11 @@ Game.prototype.popEnnemy = function()
 	var p = Math.random();
 	
 	if(p< 0.2)
-		var en = new EnnemyLife(speedPop , this.hardness, this.jRoot);
+		this.ennemies.push(new EnnemyLife(speedPop , this.hardness, this.jRoot));
 	else
-		var en = new Ennemy(speedPop , this.hardness, this.jRoot);
-	this.ennemies.push(en);
+		this.ennemies.push(new Ennemy(speedPop , this.hardness, this.jRoot));
+
+	
 	var _this = this;
 	
 	this.minTimePop -= 0.1* this.hardness;

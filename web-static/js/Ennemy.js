@@ -1,6 +1,13 @@
 var tt;
+var toto;
 var Ennemy = function(speed, hardness, jParent)
 {
+	 //toto=jParent;
+	if( typeof(jParent) ==  "undefined")
+	{
+		return;
+	}
+	
 	this.jRoot = $("<div/>").addClass("ennemy");
 	
 	this.speed = speed;

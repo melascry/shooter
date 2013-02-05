@@ -2,7 +2,7 @@ var EnnemyLife = function(speed, hardness, jParent)
 {
 	Ennemy.call(this,speed, hardness, jParent);
 	
-	this.jRoot.css("background-color", "red");
+	//this.jRoot.css("background-color", "red");
 	
 	this.flash = false;
 	this.flashing();
@@ -28,10 +28,10 @@ EnnemyLife.prototype.dieClick = function()
 	});
 }
 
-EnnemyLife.prototype.flashing()
+EnnemyLife.prototype.flashing = function()
 {
 	var _this = this;
-	var t = 100;
+	var t = 150;
 	this.jRoot.hide("fade", t, function()
 			{
 				_this.jRoot.show("fade", t, function()
