@@ -96,7 +96,7 @@ Sprite.prototype.play = function(onComplete)
 		{
 			if( (typeof onComplete) == "function")
 			{
-				console.log("complete");
+				//console.log("complete");
 				onComplete(_this);
 			}
 		}

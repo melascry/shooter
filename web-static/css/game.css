@@ -66,3 +66,9 @@
 	top : 0;
 	left : 0;
 }
+
+.lifedeath
+{
+	background-image: url(../img/heart.png);
+	background-repeat: no-repeat;
+}

@@ -61,7 +61,7 @@ Game.prototype.popEnnemy = function()
 	
 	var p = Math.random();
 	
-	if(p< 0.2)
+	if(p < 0.2)
 		this.ennemies.push(new EnnemyLife(speedPop , this.hardness, this.jRoot));
 	else
 		this.ennemies.push(new Ennemy(speedPop , this.hardness, this.jRoot));

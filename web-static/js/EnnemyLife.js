@@ -24,6 +24,7 @@ EnnemyLife.prototype.dieClick = function()
 	this.deadSprite.play(function(){
 		
 		shoot.game.upLife();
+		fb = new Feedback(_this.x,_this.y,1,0,_this.parent);
 		_this.die();
 	});
 }

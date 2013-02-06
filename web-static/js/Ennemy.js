@@ -7,7 +7,7 @@ var Ennemy = function(speed, hardness, jParent)
 	{
 		return;
 	}
-	
+	this.parent = jParent;
 	this.jRoot = $("<div/>").addClass("ennemy");
 	
 	this.speed = speed;
@@ -57,8 +57,8 @@ Ennemy.prototype.die = function()
 	
 	delete this.moveSprite;
 	delete this.deadSprite;
-	
 	delete this;
+	
 }
 Ennemy.prototype.dieClick = function()
 {
@@ -76,6 +76,7 @@ Ennemy.prototype.dieClick = function()
 	this.deadSprite.play(function(){
 		
 		shoot.game.changeScore(Math.floor(_this.speed * _this.hardness));
+		fb = new Feedback(_this.x,_this.y,2,Math.floor(_this.speed * _this.hardness),_this.parent);
 		_this.die();
 	});
 	
