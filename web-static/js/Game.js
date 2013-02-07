@@ -85,13 +85,15 @@ Game.prototype.popEnnemy = function()
 }
 Game.prototype.destroyEnnemy = function(ennemy)
 {
-	var newEnnemies = [];
+	var newEnnemies = -1;
 	for(var i = 0; i < this.ennemies.length; i++)
 		{
-			if(this.ennemies[i] != ennemy)
-				newEnnemies.push(this.ennemies[i]);
+			newEnnemies++;
+			if(this.ennemies[i] == ennemy)
+				break;
 		}
-	this.ennemies = newEnnemies;
+	if(newEnnemies != -1)
+		this.ennemies.splice(newEnnemies,1);
 }
 
 Game.prototype.changeScore = function(value)

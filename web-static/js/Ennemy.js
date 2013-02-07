@@ -55,6 +55,7 @@ Ennemy.prototype.die = function()
 	
 	this.jRoot.remove();
 	
+	shoot.game.destroyEnnemy(this);
 	delete this.moveSprite;
 	delete this.deadSprite;
 	delete this;
